@@ -1,4 +1,6 @@
+import { PrismaClient, SeverityLevel } from "@prisma/client";
 import { envs } from "./config/plugins/env.plugins";
+import { LogModel, MongoDatabase } from "./data/mongo";
 import { Server } from "./presentation/server";
 
 //funcion anonima autoInvocada
@@ -7,9 +9,12 @@ import { Server } from "./presentation/server";
 })();
 
 
-function main() {
+async function main() {
 
-    // console.log( {envs} ); 
+    MongoDatabase.connect({
+        mongoUrl: envs.MONGO_URL,
+        dbName: envs.MONGO_DBNAME,
+    })
 
     Server.start();
     

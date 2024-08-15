@@ -4,3 +4,9 @@ test/
 logs/
 
 .env
+
+mongo-data/
+postgres/
+
+mongo-test/
+postgres-test/
